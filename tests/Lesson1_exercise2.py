@@ -13,7 +13,7 @@ for el in list_dir:
         count_folders += 1
 count_files = len(list_dir) - count_folders
 
-my_file = open("Dir_count.txt", "w+")
+my_file = open("../Dir_count.txt", "w+")
 my_file.write(f"Папок: {count_folders}\n")
 my_file.write(f"Файлов с расширением '.py': {count_py}\n")
 my_file.write(f"Файлов с расширением '.exe': {count_exe}\n")
