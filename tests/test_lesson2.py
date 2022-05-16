@@ -1,30 +1,25 @@
+
 from atf import *
 from atf.ui import *
+from pages.auth_page import LoginPage
+from pages.main_page import MainPage
+from pages.left_accordeon import LeftAccordeon
+from atf.ui.should_be import Enabled
 
 
-class NewTest(TestCaseUI):
+class TestNewTest(TestCaseUI):
     @classmethod
-    def setup_class(cls):
+    def setUpClass(cls):
         cls.browser.open('https://fix-online.sbis.ru/auth/')
-        AuthPage(cls.driver).auth('Демо_тензор', 'Демо123')
+        LoginPage(cls.driver).login_as('Демо_тензор', 'Демо123')
 
+    def setUp(self):
+        MainPage(self.driver).conf_lnk.should_be(Enabled)
+        MainPage(self.driver).change_conf()
 
-    def setup(self):
-        MainPage(self.driver).search.should_be(Displayed, wait_time=True)
-
-
-    def test_01_open_news(self):
-        MainPage(self.driver).search_and_open_news('Новость для автотеста')
-
-
-    def test_02_text_in_news(self):
-        MainPage(self.driver).check_text_by_title(title_news='Новость для автотеста', text_news='Не удаляйте')
-
+    def test_01_create_note(self):
+        LeftAccordeon(self.driver).documents_btn.click()
+        LeftAccordeon(self.driver).notes_btn.click()
 
     def teardown(self):
-            self.browser.close_windows_and_alert()
-
-
-if __name__ == '__main__':
-    run_tests()
-
+        self.browser.close_windows_and_alert()
