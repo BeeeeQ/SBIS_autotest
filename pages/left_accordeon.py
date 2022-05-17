@@ -9,6 +9,6 @@ class LeftAccordeon(Region):
     documents_btn = Element(By.CSS_SELECTOR, '[data-qa="Документы"]')
     notes_btn = Element(By.CSS_SELECTOR, '[data-qa="Заметки"]')
 
-
-
-
+    def open_notes_chapter(self):
+        LeftAccordeon(self.driver).documents_btn.click()
+        LeftAccordeon(self.driver).notes_btn.click()
