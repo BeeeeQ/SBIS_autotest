@@ -10,5 +10,6 @@ class LeftAccordeon(Region):
     notes_btn = Element(By.CSS_SELECTOR, '[data-qa="Заметки"]')
 
     def open_notes_chapter(self):
+        """Открывает раздел Документы-->Заметки"""
         LeftAccordeon(self.driver).documents_btn.click()
         LeftAccordeon(self.driver).notes_btn.click()

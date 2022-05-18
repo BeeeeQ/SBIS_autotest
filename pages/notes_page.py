@@ -14,11 +14,13 @@ class NotesPage(Region):
     positive_btn = Element(By.CSS_SELECTOR, '[name="positiveButton"]')
 
     def opn_add_text_to_note(self, text_of_note):
+        """Открывает заметку, добавляет текст и сохраняет"""
         self.notes_btn.click()
         self.note_input_field.type_in(text_of_note, clear_txt=False, human=False)
         self.notes_ok_btn.click()
 
     def del_note(self):
+        """Удаляет заметку"""
         self.my_new_note.click()
         self.erase_btn.click()
         self.positive_btn.click()

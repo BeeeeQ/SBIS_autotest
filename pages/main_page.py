@@ -15,10 +15,12 @@ class MainPage(Region):
     ru_lang_btn = Element(By.XPATH, './/div/div/div/div/div/div[2][contains(.,"Русский (Россия)")]')
 
     def change_conf(self):
+        """Устанавливает конфигурацию Предприятие"""
         self.conf_lnk.click()
         self.company_lnk.click()
 
     def set_ru_lang(self):
+        """Устанавливает Русскую локализацию """
         self.tool_btn.click()
         self.flag_lang_btn.click()
         self.ru_lang_btn.click()
