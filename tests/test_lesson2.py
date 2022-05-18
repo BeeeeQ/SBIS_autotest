@@ -24,10 +24,8 @@ class TestNewTest(TestCaseUI):
     def test_01_create_note(self):
         LeftAccordeon(self.driver).open_notes_chapter()
         NotesPage(self.driver).opn_add_text_to_note('Клик по элемент c локатором')
-        delay(3)
+        ExactText(self.driver).match(NotesPage.my_new_note)
         NotesPage(self.driver).del_note()
-
-        #print(ExactText(self.driver).match(NotesPage.my_new_note))
 
     def tearDown(self):
         self.browser.close_windows_and_alert()
