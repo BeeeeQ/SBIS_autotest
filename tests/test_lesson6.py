@@ -1,5 +1,3 @@
-import time
-
 from atf import *
 from atf.ui import *
 from pages.auth_page import LoginPage
