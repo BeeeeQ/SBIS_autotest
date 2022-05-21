@@ -2,8 +2,8 @@ from atf import *
 from atf.ui import *
 from pages_inside import *
 from pages_inside.libraries.AuthControls.authForm import Adaptive
-from pages_inside.left_accordeon import LeftAccordeon
-from atf.ui.controls_vdom import ControlsTabsButtons
+from pages.left_accordeon_page import LeftAccordeonOpnPart
+from pages.plans_and_deadlines_page import PlansAndDeadlines
 
 
 class TestMilestoneCreate(TestCaseUI):
@@ -13,8 +13,8 @@ class TestMilestoneCreate(TestCaseUI):
         Adaptive(cls.driver).login_as('бот', 'БотА12')
 
     def setUp(self):
-        LeftAccordeon(self.driver).move_to_section_click('Задачи', 'Планы и сроки')
-        ControlsTabsButtons(self.driver).select(with_text='Вехи и сроки')
+        LeftAccordeonOpnPart().opn_plans_and_deadlines()
+        PlansAndDeadlines.open_milestone_tab()
         delay(3)
 
     def test_01_create_note(self):
