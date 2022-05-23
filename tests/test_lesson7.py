@@ -13,12 +13,12 @@ class TestMilestoneCreate(TestCaseUI):
         Adaptive(cls.driver).login_as('бот', 'БотА12')
 
     def setUp(self):
-        LeftAccordeonOpnPart().opn_plans_and_deadlines()
-        PlansAndDeadlines.open_milestone_tab()
-        delay(3)
+        LeftAccordeonOpnPart(self.driver).opn_plans_and_deadlines()
+        PlansAndDeadlines(self.driver).open_milestone_tab()
 
-    def test_01_create_note(self):
-        pass
+    def test_01_create_new_milestone(self):
+        PlansAndDeadlines(self.driver).create_new_milestone()
+        delay(3)
 
     def tearDown(self):
         self.browser.close_windows_and_alert()
