@@ -19,7 +19,7 @@ class TestMilestoneCreate(TestCaseUI):
         PlansAndDeadlines(self.driver).open_new_milestone()
         PlansAndDeadlines(self.driver).check_new_milestone_data()
         PlansAndDeadlines(self.driver).check_new_window_milestone_data()
-        PlansAndDeadlines(self.driver).delete_new_milestone()
 
     def tearDown(self):
+        PlansAndDeadlines(self.driver).delete_new_milestone()
         self.browser.close_windows_and_alert()

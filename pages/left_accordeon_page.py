@@ -1,4 +1,3 @@
-from atf import *
 from atf.ui import *
 from pages_inside.left_accordeon import LeftAccordeon
 
