@@ -1,28 +1,54 @@
 from atf.ui import *
-from pages_inside.libraries.AuthControls.authForm import Adaptive
-from pages.left_accordeon_page import LeftAccordeonOpnPart
+from pages_inside.libraries.EDWS3.Tasks.taskdialog import Dialog as TaskCard
 from pages_inside.saby_pages.tasks_from_me import TasksFromMe
-from pages.tasks_from_me_page import TasksFromMePage
+from pages_inside.documents.notes.index import NoteEdit
+from pages_inside.login import LoginPage
+from pages_inside.tasks.tasks.functions import create_task_by_post, post_delete_docs_by_id
+from datetime import datetime
 
 
 class TestNoteOnTask(TestCaseUI):
+    description = 'Тестовое описание задачи от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
+    note_text = 'Текст заметки от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
+    note_text1 = 'Changed'
+    task_id = None
+    client = None
+
     @classmethod
     def setUpClass(cls):
-        cls.task = TasksFromMePage(cls.driver)
-        cls.browser.open('https://fix-online.sbis.ru/auth/')
-        Adaptive(cls.driver).login_as('бот', 'БотА12')
+        cls.page = TasksFromMe(cls.driver)
+        cls.card = TaskCard(cls.driver)
+        cls.note = NoteEdit(cls.driver)
+        cls.client = LoginPage(cls.driver).login_with_transit(cls.config.get('LOGIN'), cls.config.get('PASSWORD'))
+        cls.task_id = create_task_by_post(cls.client, cls.config.get('EXECUTOR_USER_NAME'), cls.description,
+                                          regulation='Задача')
 
     def setUp(self):
-        LeftAccordeonOpnPart(self.driver).opn_tasks_from_me()
-        TasksFromMe(self.driver).select_tab('Список')
+        self.page.open()
+        self.page.search_and_open(search_text=self.description)
 
-    def test_01_create_task_and_note(self):
-        """Создание задачи, запуск в ДО, добавление и редактирование заметки, проверка отображения и удаление заметки"""
-        self.task.create_task_fill_and_save()
-        self.task.opn_new_task_and_add_note()
-        self.task.note_edit()
-        self.task.delete_note()
+    @classmethod
+    def tearDownClass(cls):
+        post_delete_docs_by_id(cls.client, [cls.task_id], forever=True)
+        cls.browser.close_windows_and_alert()
 
-    def tearDown(self):
-        self.task.delete_task()
-        self.browser.close_windows_and_alert()
+    def test_01_create_note_on_task(self):
+        """Открываем созданную задачу, добавляем заметку, сохраняем, редактируем, проверяем отображение"""
+        card = self.card
+        note = self.note
+        card.service_commands.select_service_command('Пометки и заметки')
+        card.marks.marks_dialog.add_note()
+        note.enter_text_in_editor(note_text=self.note_text)
+        note.save()
+        card.check_notes(count=1)
+        card.notes_cslst.click()
+        note.enter_text_in_editor(note_text=self.note_text1, check_placeholder=False)
+        note.save()
+        card.check_notes_text(self.note_text1)
+        card.close()
+
+    def test_02_delete_note_on_task(self):
+        """Удаляем заметку, проверяем, что заметок на доке нет"""
+        self.card.notes_cslst.click()
+        self.note.delete_note()
+        self.card.check_notes(count=0)
