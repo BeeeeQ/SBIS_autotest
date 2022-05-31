@@ -17,6 +17,7 @@ class TestNoteOnTask(TestCaseUI):
         TasksFromMe(self.driver).select_tab('Список')
 
     def test_01_create_task_and_note(self):
+        """Создание задачи, запуск в ДО, добавление и редактирование заметки, проверка отображения и удаление заметки"""
         self.task.create_task_fill_and_save()
         self.task.opn_new_task_and_add_note()
         self.task.note_edit()
