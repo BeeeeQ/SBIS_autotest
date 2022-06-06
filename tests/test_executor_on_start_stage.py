@@ -15,7 +15,7 @@ from time import sleep
 class TestExecutorOnStartStage(TestCaseUI):
     description = 'Тестовое описание задачи от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
     regulation = ['старт исполнитель определен (бот)', 'старт исполнитель не определен',
-                  '2 этапа оба определены (бот и сваркин)', '2 этапа  (бот и неопределен)', '2 этапа  оба неопределены',
+                  '2 этапа оба определены (бот и сваркин)', '2 этапа (бот и неопределен)', '2 этапа оба неопределены',
                   '2 этапа и два перехода оба определены (бот и сваркин)']
     reg_num = 0
     task_id = None
@@ -26,7 +26,7 @@ class TestExecutorOnStartStage(TestCaseUI):
         cls.page = TasksFromMe(cls.driver)
         cls.card = TaskCard(cls.driver)
         cls.task = EventTape(cls.driver)
-        #cls.dzz = Dzz(cls.driver)
+        # cls.dzz = Dzz(cls.driver)
         cls.client = LoginPage(cls.driver).login_with_transit(cls.config.get('LOGIN'), cls.config.get('PASSWORD'))
 
     def setUp(self):
@@ -50,7 +50,7 @@ class TestExecutorOnStartStage(TestCaseUI):
         log('Проверяем исполнителя активного этапа')
         self.task.check_current_responsible(self.config.get('EXECUTOR_USER_NAME_IN_FEED'))
 
-    def test_02_performer_is_selected(self):
+    def test_02_performer_need_to_choose(self):
         """Исполнитель на старте выбирается вручную"""
         self.card.next_phase_btn.click()
         self.card.dzz.executor_fl.autocomplete_search(self.config.get('EXECUTOR_USER_NAME'))
@@ -68,4 +68,11 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.task.check_event('Бот А.А.', num_phase=2)
         self.task.check_event('Сваркин С.Г.', num_phase=3)
 
-    def test_04_two_performers_one_
+    def test_04_two_performers_one_need_to_choose(self):
+        """Два этапа на старте, на обном исполнитель выбирается вручную"""
+        self.card.next_phase_btn.click()
+        self.card.dzz.executor_fl.autocomplete_search('Сваркин Сергей Геннадьевич')
+        self.card.dzz.click_on_transit_by_title('старт')
+        log('Проверяем исполнителя активного этапа')
+        self.task.check_event('Бот А.А.', num_phase=2)
+        self.task.check_event('Сваркин С.Г.', num_phase=3)
