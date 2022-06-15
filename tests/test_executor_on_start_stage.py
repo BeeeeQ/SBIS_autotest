@@ -47,7 +47,7 @@ class TestExecutorOnStartStage(TestCaseUI):
         """Исполнитель на старте определен, проверяем правильность выбора"""
         self.card.make_transition()
         delay(1)
-        self.card.select_event_tape_tab()
+        self.card.select_event_tape_tab_by_icon()
         log('Проверяем исполнителя активного этапа')
         self.task.check_current_responsible(self.config.get('EXECUTOR_USER_NAME_IN_FEED'))
 
@@ -58,14 +58,14 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.card.dzz.click_on_transit_by_title('старт')
         log('Проверяем исполнителя активного этапа')
         delay(1)
-        self.card.select_event_tape_tab()
+        self.card.select_event_tape_tab_by_icon()
         self.task.check_current_responsible(self.config.get('EXECUTOR_USER_NAME_IN_FEED'))
 
     def test_03_two_performers_is_selected(self):
         """Два исполнителя определены на старте"""
         self.card.make_transition()
         delay(1)
-        self.card.select_event_tape_tab()
+        self.card.select_event_tape_tab_by_icon()
         log('Проверяем исполнителя активного этапа')
         self.task.check_event('Бот А.А.', num_phase=2)
         self.task.check_event('Сваркин С.Г.', num_phase=3)
@@ -76,7 +76,7 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.card.dzz.executor_fl.autocomplete_search('Бухгалтер Галина Геннадьевна')
         self.card.dzz.click_on_transit_by_title('старт1, старт2')
         delay(1)
-        self.card.select_event_tape_tab()
+        self.card.select_event_tape_tab_by_icon()
         log('Проверяем исполнителя активного этапа')
         self.task.check_event('Бот А.А.', num_phase=2)
         self.task.check_event('Бухгалтер Г.Г.', num_phase=3)
@@ -88,7 +88,7 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.card.dzz.executor_fl.autocomplete_search('Бухгалтер Галина Геннадьевна')
         self.card.dzz.click_on_transit_by_title('старт1, старт2')
         delay(1)
-        self.card.select_event_tape_tab()
+        self.card.select_event_tape_tab_by_icon()
         log('Проверяем исполнителя активного этапа')
         self.task.check_event('Бот А.А.', num_phase=2)
         self.task.check_event('Бухгалтер Г.Г.', num_phase=3)
