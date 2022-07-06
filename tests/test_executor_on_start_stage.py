@@ -5,6 +5,7 @@ from pages_inside.edo_controls.edo3dialog import EventTape
 from pages_inside.saby_pages.tasks_from_me import TasksFromMe
 from pages_inside.login import LoginPage
 from datetime import datetime
+from helpers.layout import Layout
 
 
 class TestExecutorOnStartStage(TestCaseUI):
@@ -33,11 +34,12 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.card.delete_task()
         self.browser.close_windows_and_alert()
 
-    def test_01_executor_determined(self):
+    def test_01_executor_determined(self, layout):
         """Исполнитель на старте определен, проверяем правильность выбора"""
         self.card.make_transition()
         delay(1)
         self.card.select_event_tape_tab_by_icon()
+        layout.capture(name='main_elements', element=self.card.tabs)
         log('Проверяем исполнителя активного этапа')
         self.task.check_current_responsible(self.config.get('EXECUTOR_USER_NAME_IN_FEED'))
 
