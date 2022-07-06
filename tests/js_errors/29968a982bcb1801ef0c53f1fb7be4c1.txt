@@ -1,0 +1,1 @@
+17-05-2022 19:35:07.179000 https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3100-1024 62:24657 Uncaught TypeError: Cannot read properties of undefined (reading 'shortMonths')

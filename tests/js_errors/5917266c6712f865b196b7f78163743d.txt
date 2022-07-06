@@ -1,0 +1,5 @@
+17-05-2022 19:38:27.769000 https://fix-online.sbis.ru/previewer/r/500/320/disk/api/v1/5b051d1c-ad17-4982-93a9-5ff4460a648b - Failed to load resource: the server responded with a status of 500 ()
+17-05-2022 19:38:28.207000 https://fix-online.sbis.ru/previewer/r/500/320/disk/api/v1/8520a57b-80ff-4bc1-9da8-0b877730049c_d8f2993d-e919-44cc-b191-7da165f0e332 - Failed to load resource: the server responded with a status of 500 ()
+17-05-2022 19:38:28.206000 https://fix-online.sbis.ru/previewer/r/500/320/disk/api/v1/7aa80afd-cd2a-466c-ba5c-daab31d22d75 - Failed to load resource: the server responded with a status of 500 ()
+17-05-2022 19:38:28.218000 https://fix-online.sbis.ru/previewer/s/300/300/disk/api/v1/d8cc5ea2-66ac-4fdb-9740-5045891547f7_ac930640-a181-4e0d-8465-5c26888f9333 - Failed to load resource: the server responded with a status of 500 ()
+17-05-2022 19:38:23.227000 https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3100-1024 62:24657 Uncaught TypeError: Cannot read properties of undefined (reading 'shortMonths')

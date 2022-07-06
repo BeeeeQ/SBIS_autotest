@@ -1,0 +1,46 @@
+24-05-2022 15:36:44.663000 https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66 107:58249 "CONTROL ERROR: " "Ошибка при вызове обработчика \"on:readsuccessed\" из контрола PM/Milestones/dialog:Dialog.
+                     r.get is not a function IN \"PM/Milestones/dialog:Dialog\"
+
+ ↱ Controls/form:Controller
+  ↱ EDO3/document:Controller
+   ↱ PM/Milestones/dialog:Dialog
+    ↱ UICore/Base:Control
+     ↱ Controls/_popup/Manager/Popup
+      ↱ Layout/browsers:Browser
+       ↱ UICore/Base:Control
+        ↱ EDO3/browser:OriginalBrowser
+         ↱ Controls/context:ContextOptionsConsumer
+          ↱ EDO3/browser:Browser
+           ↱ UICore/Base:Control
+            ↱ UICore/Base:Control
+             ↱ Controls/context:ContextOptionsConsumer
+              ↱ PM/Milestones/registry:Registry
+               ↱ Controls/Container/Async:template - \"PM/Milestones/registry:Registry\"
+                ↱ SabyPage/base:PrefetchAwaiter
+                 ↱ SabyPage/mainLayout:ContentTemplate
+                  ↱ Controls/Container/Async:template - \"SabyPage/mainLayout:ContentTemplate\"
+                   ↱ Controls/context:ContextOptionsProvider
+                    ↱ SabyPage/mainLayout:Template → Controls/Container/Async:template - \"SabyPage/mainLayout:Template\" → UICore/Base:Control → Controls/scroll:ScrollContextProvider → Controls/Application → UI/Bootstrap → SbisEnvUI/Bootstrap → Controls/themes:Wrapper → UICore/Base:Control → Page/base:Controller → OnlineSbisRu/Index
+" "
+Stack: Error
+    at f (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:33:7061)
+    at Object.d [as error] (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:33:8818)
+    at n (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:26:6117)
+    at i.vdomEventBubbling (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:26:6521)
+    at i.startEvent (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:26:7067)
+    at Object.n (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:26:11992)
+    at e.h._notify (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:28:38963)
+    at e._notifyCrudSuccessed (https://fix-cdn.sbis.ru/resources/EDO3/document.min.js?x_module=22.3104-66:1:146150)
+    at https://fix-cdn.sbis.ru/resources/EDO3/document.min.js?x_module=22.3104-66:1:141773"
+24-05-2022 15:36:51.604000 https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66 107:58249 "Unknown Object: " "Event handler for \"onmessage\" returned error: Cannot read properties of undefined (reading '_dialogDestroyed')" "
+Stack: TypeError: Cannot read properties of undefined (reading '_dialogDestroyed')
+    at e._documentChangedHandler (https://fix-cdn.sbis.ru/resources/EDO3/document.min.js?x_module=22.3104-66:1:153623)
+    at e._notifyToHandler (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:107:3639)
+    at e._notifyWithTarget (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:107:4607)
+    at e.notify (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:107:4047)
+    at e.fire (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:34389)
+    at e.deliver (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:41561)
+    at e.deliver (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:42681)
+    at e.messageHandler (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:42404)
+    at e.messageHandler (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:51872)
+    at e.ws.onmessage (https://fix-cdn.sbis.ru/resources/Superbundles/online-superbundle.package.min.js?x_module=22.3104-66:118:29328)"
