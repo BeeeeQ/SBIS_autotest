@@ -39,7 +39,6 @@ class TestExecutorOnStartStage(TestCaseUI):
         self.card.make_transition()
         delay(1)
         self.card.select_event_tape_tab_by_icon()
-        layout.capture(name='main_elements', element=self.card.tabs)
         log('Проверяем исполнителя активного этапа')
         self.task.check_current_responsible(self.config.get('EXECUTOR_USER_NAME_IN_FEED'))
 
