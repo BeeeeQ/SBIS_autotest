@@ -10,11 +10,9 @@ from datetime import datetime
 
 
 class TestDZZ(TestCaseUI):
-    # task_head = Element(By.CSS_SELECTOR, '.controls-StackTemplate__top-area')
     description = 'Тестовое описание задачи от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
     client = None
     task_id = None
-    # dzz_card = Element(By.CLASS_NAME, Edo3Dialog.last_panel_class)
 
     @classmethod
     def setUpClass(cls):
@@ -47,5 +45,10 @@ class TestDZZ(TestCaseUI):
         layout.capture(name='passage_elm', element=self.card.dzz.passage_elm)
 
     def test_02_choose_staff_for_reassign(self, layout):
-        self.card.dzz.executor_fl.autocomplete_search(self.config.get('Бухгалтер Галина Геннадьевна'))
+        self.card.dzz.transit_to(2, 'Бухгалтер')
         layout.capture(name='passage_elm', element=self.card.dzz.passage_elm)
+
+    # def test_03_dzz_settings(self, layout):
+    #     self.card.dzz.passage_settings_btn.click()
+    #     layout.capture(name='passage_settings_window', element=self.card.dzz.panel)
+
