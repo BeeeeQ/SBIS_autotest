@@ -1,5 +1,7 @@
 from atf import *
 from atf.ui import *
+from atf.ui import Element
+from pages_inside.libraries.EDO3.timeline import CurrentStateDialog
 from pages_inside.libraries.EDO3.timeline import Timeline
 from pages_inside.libraries.EDWS3.Tasks.taskdialog import Dialog as TaskCard
 from pages_inside.edo_controls.edo3dialog import EventTape, Edo3Dialog
@@ -13,7 +15,6 @@ class TestDecorateLink(TestCaseUI):
     description = 'Тестовое описание задачи от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
     client = None
     task_id = None
-    current_state_window = Element(By.CSS_SELECTOR, '.edo3-Timeline__currentState')
 
 
     @classmethod
@@ -22,6 +23,7 @@ class TestDecorateLink(TestCaseUI):
         cls.page = TasksInWork(cls.driver)
         cls.card = TaskCard(cls.driver)
         cls.feed = Timeline(cls.driver)
+        cls.cs = CurrentStateDialog(cls.driver)
 
     def setUp(self):
         self.page.open()
@@ -40,7 +42,6 @@ class TestDecorateLink(TestCaseUI):
     #     layout.capture(name='dzz_attach', element=self.card.dzz.attaches)
 
     def test_01_decorate_in_current_state(self, layout):
-        self.feed.chat.context_click()
-        delay(3)
-        self.card.attachments.toolbar.select(contains_text='Редактировать')
-        layout.capture(name='current_state_window', element=self.current_state_window)
+        self.feed.chat.click()
+        delay(2)
+        layout.capture(name='current_state_window', element=self.cs.current_state_window)

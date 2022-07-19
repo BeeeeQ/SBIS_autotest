@@ -46,9 +46,11 @@ class TestDZZ(TestCaseUI):
 
     def test_02_choose_staff_for_reassign(self, layout):
         self.card.dzz.transit_to(2, 'Бухгалтер')
+        delay(1)
         layout.capture(name='passage_elm', element=self.card.dzz.passage_elm)
 
-    # def test_03_dzz_settings(self, layout):
-    #     self.card.dzz.passage_settings_btn.click()
-    #     layout.capture(name='passage_settings_window', element=self.card.dzz.panel)
+    def test_03_dzz_settings(self, layout):
+        self.card.dzz.passage_settings_btn.click()
+        delay(1)
+        layout.capture(name='passage_settings_window', element=self.card.dzz.passage_settings.panel)
 
