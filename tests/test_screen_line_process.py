@@ -25,26 +25,31 @@ class TestDecorateLink(TestCaseUI):
         cls.feed = Timeline(cls.driver)
         cls.cs = CurrentStateDialog(cls.driver)
         cls.dp = DocsPage(cls.driver)
+        TasksInWork(cls.driver).open()
+        TasksInWork(cls.driver).search_and_open(search_text='Тест линейный не удалять')
 
     def setUp(self):
-        self.page.open()
-        self.page.search_and_open(search_text='Тест декорирования не удалять')
-        self.card.select_event_tape_tab_by_icon()
+        Edo3Dialog(self.driver).double_button.next_phase_click()
+
 
     def tearDown(self):
-        pass
+        self.card.dzz.close()
 
     @classmethod
     def tearDownClass(cls):
         cls.browser.close_windows_and_alert()
 
-    def test_01_decorate_in_current_state(self, layout):
-        self.feed.chat.click()
-        delay(3)
-        layout.capture(name='current_state_window', element=self.cs.current_state_window)
+    def test_01_dzz_line_process_screen(self, layout):
+        layout.capture(name='line_process_dzz_window', element=self.dp.last_item_elm)
 
-    def test_02_check_decorate_in_dzz(self, layout):
-        self.card.next_phase_click()
-        delay(3)
-        layout.capture(name='dzz_attach', element=self.dp.last_item_elm)
+    def test_02_dzz_line_process_reassign_screen(self, layout):
+        self.card.dzz.transit_to(2, 'Бухгалтер')
+        delay(1)
+        layout.capture(name='reassign_in_line_process_dzz_window', element=self.dp.last_item_elm)
+
+    def test_03_expand_transitions_dzz_line_process_screen(self, layout):
+
+
+
+
 
