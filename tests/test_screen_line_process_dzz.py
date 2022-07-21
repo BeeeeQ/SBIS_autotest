@@ -12,7 +12,7 @@ from pages_inside.tasks.tasks.functions import create_task_by_post, post_delete_
 from datetime import datetime
 
 
-class TestDecorateLink(TestCaseUI):
+class TestScreenLineProcessDZZ(TestCaseUI):
     description = 'Тестовое описание задачи от ' + datetime.now().strftime('%H:%M:%S %d.%m.%y')
     client = None
     task_id = None
@@ -31,7 +31,6 @@ class TestDecorateLink(TestCaseUI):
     def setUp(self):
         Edo3Dialog(self.driver).double_button.next_phase_click()
 
-
     def tearDown(self):
         self.card.dzz.close()
 
@@ -40,14 +39,20 @@ class TestDecorateLink(TestCaseUI):
         cls.browser.close_windows_and_alert()
 
     def test_01_dzz_line_process_screen(self, layout):
+        delay(2)
         layout.capture(name='line_process_dzz_window', element=self.dp.last_item_elm)
 
     def test_02_dzz_line_process_reassign_screen(self, layout):
         self.card.dzz.transit_to(2, 'Бухгалтер')
-        delay(1)
+        delay(2)
         layout.capture(name='reassign_in_line_process_dzz_window', element=self.dp.last_item_elm)
 
     def test_03_expand_transitions_dzz_line_process_screen(self, layout):
+        self.card.dzz.expand_transitions.click()
+        self.card.dzz.expand_transitions.click()
+        delay(2)
+        layout.capture(name='expand_all_transitions_in_line_process_dzz_window', element=self.dp.last_item_elm)
+
 
 
 
